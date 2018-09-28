@@ -4,8 +4,8 @@ public class ReferenceBook extends LibraryBook {
 	private String collection;
 	
 	public ReferenceBook (String auth, String bookTitle, 
-			int refNum, int callNum, String collection) {
-		super (auth, bookTitle, refNum, callNum);
+			String isbn, String callNum, String collection) {
+		super (auth, bookTitle, isbn, callNum);
 		this.collection = collection;
 	}
 
@@ -23,7 +23,7 @@ public class ReferenceBook extends LibraryBook {
 		this.collection = collection;
 	}
 	
-	public void checkout () {
+	public void checkout (String patron, String dueDate) {
 		System.out.println("Cannot check out a reference book");
 	}
 	

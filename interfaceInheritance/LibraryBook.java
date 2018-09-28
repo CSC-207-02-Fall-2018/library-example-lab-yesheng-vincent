@@ -5,37 +5,43 @@ import java.lang.Comparable;
 public abstract class LibraryBook extends Book 
 					implements Comparable <LibraryBook> {
 
-	protected int callNumber;
+	protected String callNumber;
 	
-	public LibraryBook (String auth, String bookTitle, int refNum, int callNum) {
-		super (auth, bookTitle, refNum);
+	public LibraryBook (String auth, String bookTitle, String isbn, String callNum) {
+		super (auth, bookTitle, isbn);
 		callNumber = callNum;
 	}
 
-	public int getCallNumber() {
+	/**
+	 * @return the callNumber
+	 */
+	public String getCallNumber() {
 		return callNumber;
 	}
 
-	public void setCallNumber(int callNumber) {
+	/**
+	 * @param callNumber the callNumber to set
+	 */
+	public void setCallNumber(String callNumber) {
 		this.callNumber = callNumber;
 	}
 
-	abstract public void checkout ();
+	abstract public void checkout (String patron, String dueDate);
 
 	abstract public void returned ();
 
 	abstract public String circulationStatus ();
-
+	
+	/** 
+	 * implementation of Comparable's compareTo method
+	 * 
+	 * @param lib	  Library object being compared
+	 * @return 0 if call numbers of this and lib match
+	 *         < 0 if call number of this comes before call number of lib
+	 *         > 0 otherwise
+	 */
 	public int compareTo(LibraryBook book) {
-		if (this.callNumber == book.getCallNumber()) {
-			return 0;
-		}
-		else if (this.callNumber > book.getCallNumber()) {
-			return -1;
-		}
-		else {
-			return 1;
-		}
+		return this.callNumber.compareTo(book.getCallNumber());
 	}
 
 	public String toString () {
