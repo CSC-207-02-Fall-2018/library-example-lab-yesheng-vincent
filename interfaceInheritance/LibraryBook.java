@@ -7,6 +7,14 @@ public abstract class LibraryBook extends Book
 
 	protected String callNumber;
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param auth			author
+	 * @param bookTitle		book title
+	 * @param isbn			isbn number
+	 * @param callNum		book call number
+	 */
 	public LibraryBook (String auth, String bookTitle, String isbn, String callNum) {
 		super (auth, bookTitle, isbn);
 		callNumber = callNum;
@@ -25,11 +33,27 @@ public abstract class LibraryBook extends Book
 	public void setCallNumber(String callNumber) {
 		this.callNumber = callNumber;
 	}
-
+	
+	/**
+	 * Checks out a book if possible
+	 * 
+	 * @param patron		Patron who checked the book out
+	 * @param dueDate		Date the book must be returned by
+	 */
 	abstract public void checkout (String patron, String dueDate);
 
+	/**
+	 * Returns a book if possible (works whether the book was 
+	 * already checked out or not).
+	 */
 	abstract public void returned ();
 
+	/**
+	 * Status of the book (ie checked out or not)
+	 * 
+	 * @return		Returns a string containing checkout information or
+	 * 				"book available on shelves" if not checked out
+	 */
 	abstract public String circulationStatus ();
 	
 	/** 
@@ -44,6 +68,11 @@ public abstract class LibraryBook extends Book
 		return this.callNumber.compareTo(book.getCallNumber());
 	}
 
+	/**
+	 * toString method
+	 * 
+	 * @return		Returns string containing field values
+	 */
 	public String toString () {
 		return super.toString() + "\n" + "Call number: " + callNumber;
 	}

@@ -1,0 +1,39 @@
+Library Class Enhancements |
+---------------------------|
+
+Methods |
+--------|
+
+/**
+* Prints a string about the circulation status of the book
+* 
+* @param callNum		Call number of the book
+*/
+public void circulationStatus(String callNum) {
+    LibraryBook temp = new CirculatingBook ("", "", "", callNum);
+    LibraryBook book = findBook (temp);
+
+    if (book == null) {
+        System.out.println("Call number " + callNum + "Not found");
+    } else {
+        System.out.println(book.circulationStatus());
+    }
+}
+
+Extra Testing |
+==============|
+Here we test the previously untested method, circulationStatus
+
+
+// Check the circulation status of some books after checkout
+lib.circulationStatus("QA43.W34");
+lib.circulationStatus("QA76.6.W3275");
+lib.circulationStatus("64.2 R25ex"); // Reference book
+System.out.println("");
+
+// Check circulation status after some books are returned
+lib.circulationStatus("QA76.6.W3275");
+lib.circulationStatus("64.2 R25ex");
+
+// Circulation status of a book that does not exist
+lib.circulationStatus("w2hy35hh"); // Should fail

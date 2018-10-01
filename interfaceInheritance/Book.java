@@ -5,12 +5,22 @@ public class Book {
 	protected String title;
 	protected String isbn;
 	
+	/**
+	 * Empty constructor
+	 */
 	public Book () {
 		author = new String ();
 		title = new String ();
 		isbn = new String ();
 	}
 	
+	/**
+	 * Standard constructor
+	 * 
+	 * @param auth			author
+	 * @param bookTitle		book title
+	 * @param isbn			isbn number
+	 */
 	public Book (String auth, String bookTitle, String isbn) {
 		this.author = auth;
 		this.title = bookTitle;
@@ -58,7 +68,12 @@ public class Book {
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
-
+	
+	/**
+	 * toString method
+	 * 
+	 * @return		Returns string containing field values
+	 */
 	public String toString () {
 		return "Title: " + title + "\n"
 				+ "Author: " + author + "\n"
